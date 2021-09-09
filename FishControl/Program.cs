@@ -16,7 +16,7 @@ namespace FishControl
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("choose type fish (Semga / Pollock)");
+            Console.WriteLine("choose type fish (Semga / Pollock / Pink Salmon)");
             string chooseType = Console.ReadLine();
 
             Console.WriteLine("input date(DD.M.YYYY HH:MM)");
@@ -49,7 +49,7 @@ namespace FishControl
                     }
                 }
             }
-            if (chooseType == "Pollock")
+            else if (chooseType == "Pollock")
             {
                 Pollock f = new Pollock();
                 if (f.ComplianceConditions(dateFish, temp)) // проверка на темп
@@ -62,8 +62,21 @@ namespace FishControl
 
                 }
             }
+            else if (chooseType == "Pink Salmon")
+            {
+                PinkSalmon f = new PinkSalmon();
+                if (f.ComplianceConditions(dateFish, temp)) // проверка на темп
+                {
+                    Console.WriteLine("Порог максимальной допустимой температуры превышен на " + TimeSpan.FromMinutes(f.time * 10) + " минут");
+                    foreach (var r in f.result)
+                    {
+                        Console.WriteLine(r);
+                    }
 
-            string sdad = Console.ReadLine();
+                }
+            }
+
+            string sdad = Console.ReadLine(); // чтобы консоль не закрывалась
         }
 
         public static DateTime ConvertStringToDateTime(string dd_mm_yy_HH_MM)
@@ -113,7 +126,7 @@ namespace FishControl
         public Semga() : base()
         {
             name = "Semga";
-            maxTemp = 5;
+            maxTemp = 6;
             maxTempTime = 20;
             minTemp = -3;
             minTempTime = 50;
@@ -139,7 +152,7 @@ namespace FishControl
                 if (Convert.ToInt32(temps[i]) > maxTemp)
                 {
                     maxTempBelow = true;
-                    result.Add($"Время:{dateAndTime.AddMinutes(i * 10)}, Факт:{temps[i]}, Норма:{maxTemp}, Отклонение от нормы:{(Convert.ToInt32(temps[i]) - maxTemp)}");
+                    result.Add($"Время:{dateAndTime.AddMinutes(i * 10)}, Факт:{temps[i]}, Норма:{maxTemp}, Отклонение от нормы:+{(Convert.ToInt32(temps[i]) - maxTemp)}");
                     time++;
                 }
 
@@ -147,7 +160,7 @@ namespace FishControl
             }
 
 
-            if ((minTempBelow && time * 10 > minTempTime) || (maxTempBelow && time * 10 > maxTempTime))
+            if ((minTempBelow && time * 10 > minTempTime) || (maxTempBelow && time * 10 > maxTempTime)) //Проверка на продолжиельность превышения пределов
             {
                 //Console.WriteLine("Порог минимальной допустимой температуры превышен на " + TimeSpan.FromMinutes(time * 10) + " минут");
                 //foreach(var f in result)
@@ -169,8 +182,9 @@ namespace FishControl
         public Pollock() : base()
         {
             name = "Pollock";
-            maxTemp = -7;
-            maxTempTime = 20;
+            maxTemp = -5;
+            maxTempTime = 40;
+            
 
             Output();
         }
@@ -182,13 +196,13 @@ namespace FishControl
                 if (Convert.ToInt32(temps[i]) > maxTemp)
                 {
                     maxTempBelow = true;
-                    result.Add($"Время:{dateAndTime.AddMinutes(i * 10)}, Факт:{temps[i]}, Норма:{maxTemp}, Отклонение от нормы:{(Convert.ToInt32(temps[i]) - maxTemp)}");
+                    result.Add($"Время:{dateAndTime.AddMinutes(i * 10)}, Факт:{temps[i]}, Норма:{maxTemp}, Отклонение от нормы:+{(Convert.ToInt32(temps[i]) - maxTemp)}");
                     time++;
                 }
 
 
             }
-            if (maxTempBelow)
+            if (maxTempBelow && time * 10 > maxTempTime) //Проверка на продолжиельность превышения пределов
             {
                 return true;
             }
@@ -197,6 +211,56 @@ namespace FishControl
                 return false;
             }
             
+        }
+    }
+
+    class PinkSalmon : Fish //Горбуша ( по англ Pink Salmon -_-)
+    {
+        public PinkSalmon() : base()
+        {
+            name = "PinkSalmon";
+            minTemp = -7;
+            minTempTime = 20;
+            maxTemp = 2;
+            maxTempTime = 40;
+
+            Output();
+        }
+
+        public bool ComplianceConditions(DateTime dateAndTime, string[] temps) //Проверка на превышение пределов температуры, возвращает булл значение
+        {
+
+            for (int i = 0; i < temps.Length; i++) //Проверка на превышение мин температуры
+            {
+                if (Convert.ToInt32(temps[i]) < minTemp)
+                {
+                    minTempBelow = true;
+                    result.Add($"Время:{dateAndTime.AddMinutes(i * 10)}, Факт:{temps[i]}, Норма:{minTemp}, Отклонение от нормы:{(Convert.ToInt32(temps[i]) - minTemp)}");
+                    time++;
+                }
+            }
+
+            for (int i = 0; i < temps.Length; i++) //Проверка на превышение макс температуры
+            {
+                if (Convert.ToInt32(temps[i]) > maxTemp)
+                {
+                    maxTempBelow = true;
+                    result.Add($"Время:{dateAndTime.AddMinutes(i * 10)}, Факт:{temps[i]}, Норма:{maxTemp}, Отклонение от нормы:+{(Convert.ToInt32(temps[i]) - maxTemp)}");
+                    time++;
+                }
+
+
+            }
+
+
+            if ((minTempBelow && time * 10 > minTempTime) || (maxTempBelow && time * 10 > maxTempTime)) //Проверка на продолжиельность превышения пределов
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
