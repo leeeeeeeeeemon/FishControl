@@ -16,7 +16,7 @@ namespace FishControl
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("choose type fish(Semga)");
+            Console.WriteLine("choose type fish (Semga / Pollock)");
             string chooseType = Console.ReadLine();
 
             Console.WriteLine("input date(DD.M.YYYY HH:MM)");
@@ -47,6 +47,19 @@ namespace FishControl
                             Console.WriteLine(r);
                         }
                     }
+                }
+            }
+            if (chooseType == "Pollock")
+            {
+                Pollock f = new Pollock();
+                if (f.ComplianceConditions(dateFish, temp)) // проверка на темп
+                {
+                        Console.WriteLine("Порог максимальной допустимой температуры превышен на " + TimeSpan.FromMinutes(f.time * 10) + " минут");
+                        foreach (var r in f.result)
+                        {
+                            Console.WriteLine(r);
+                        }
+
                 }
             }
 
@@ -84,31 +97,28 @@ namespace FishControl
         {
        
         }
-    }
 
-    class Semga : Fish
-    {
-
-
-
-        public Semga() : base()
-        {
-            name = "Semga";
-            maxTemp = 6;
-            maxTempTime = 20;
-            minTemp = -3;
-            minTempTime = 50;
-
-            Output();
-        }
-
-        public void Output()
+        protected void Output()
         {
             Console.WriteLine(name);
             Console.WriteLine(maxTemp);
             Console.WriteLine(maxTempTime);
             Console.WriteLine(minTemp);
             Console.WriteLine(minTempTime);
+        }
+    }
+
+    class Semga : Fish
+    {
+        public Semga() : base()
+        {
+            name = "Semga";
+            maxTemp = 5;
+            maxTempTime = 20;
+            minTemp = -3;
+            minTempTime = 50;
+
+            Output();
         }
 
         public bool ComplianceConditions(DateTime dateAndTime, string[] temps) //Проверка на превышение пределов температуры, возвращает булл значение
@@ -152,5 +162,41 @@ namespace FishControl
             }
         }
 
+    }
+
+    class Pollock : Fish //Минтай ( по англ Pollock воть так-_-)
+    {
+        public Pollock() : base()
+        {
+            name = "Pollock";
+            maxTemp = -7;
+            maxTempTime = 20;
+
+            Output();
+        }
+
+        public bool ComplianceConditions(DateTime dateAndTime, string[] temps) //Проверка на превышение пределов температуры, возвращает булл значение
+        {
+            for (int i = 0; i < temps.Length; i++) //Проверка на превышение макс температуры
+            {
+                if (Convert.ToInt32(temps[i]) > maxTemp)
+                {
+                    maxTempBelow = true;
+                    result.Add($"Время:{dateAndTime.AddMinutes(i * 10)}, Факт:{temps[i]}, Норма:{maxTemp}, Отклонение от нормы:{(Convert.ToInt32(temps[i]) - maxTemp)}");
+                    time++;
+                }
+
+
+            }
+            if (maxTempBelow)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
+        }
     }
 }
