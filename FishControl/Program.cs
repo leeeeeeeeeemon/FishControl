@@ -1,8 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace FishControl
 {
@@ -23,7 +29,25 @@ namespace FishControl
             if (chooseType == "Semga")
             {
                 Semga f = new Semga();
-                f.ComplianceConditions(dateFish, temp);
+                if(f.ComplianceConditions(dateFish, temp)) // проверка на темп
+                {
+                    if (f.minTempBelow) //если превышен минимальный
+                    {
+                        Console.WriteLine("Порог минимальной допустимой температуры превышен на " + TimeSpan.FromMinutes(f.time * 10) + " минут");
+                        foreach(var r in f.result)
+                        {
+                            Console.WriteLine(r);
+                        }
+                    }
+                    else if(f.maxTempBelow) //если превышен максимальный
+                    {
+                        Console.WriteLine("Порог максимальной допустимой температуры превышен на " + TimeSpan.FromMinutes(f.time * 10) + " минут");
+                        foreach (var r in f.result)
+                        {
+                            Console.WriteLine(r);
+                        }
+                    }
+                }
             }
 
             string sdad = Console.ReadLine();
@@ -40,7 +64,7 @@ namespace FishControl
 
     }
 
-    
+
 
     class Fish
     {
@@ -49,9 +73,12 @@ namespace FishControl
         protected int maxTempTime;
         protected int minTemp;
         protected int minTempTime;
+        public bool minTempBelow = false;
+        public bool maxTempBelow = false;
 
-        protected List<string> result = new List<string>();
-        protected int time = 0;
+        public List<string> result = new List<string>();
+        public int time = 0;
+        
 
         public Fish()
         {
@@ -61,9 +88,9 @@ namespace FishControl
 
     class Semga : Fish
     {
-        
 
-        
+
+
         public Semga() : base()
         {
             name = "Semga";
@@ -84,25 +111,44 @@ namespace FishControl
             Console.WriteLine(minTempTime);
         }
 
-        public void ComplianceConditions(DateTime dateAndTime, string[] temps)
+        public bool ComplianceConditions(DateTime dateAndTime, string[] temps) //Проверка на превышение пределов температуры, возвращает булл значение
         {
-            bool minTempBelow = false;
-            for (int i = 0; i < temps.Length; i++)
+
+            for (int i = 0; i < temps.Length; i++) //Проверка на превышение мин температуры
             {
-                if(Convert.ToInt32(temps[i]) < minTemp)
+                if (Convert.ToInt32(temps[i]) < minTemp)
                 {
                     minTempBelow = true;
                     result.Add($"Время:{dateAndTime.AddMinutes(i * 10)}, Факт:{temps[i]}, Норма:{minTemp}, Отклонение от нормы:{(Convert.ToInt32(temps[i]) - minTemp)}");
                     time++;
                 }
             }
-            if (minTempBelow && time * 10 > minTempTime)
+
+            for (int i = 0; i < temps.Length; i++) //Проверка на превышение макс температуры
             {
-                Console.WriteLine("Порог минимальной допустимой температуры превышен на " + TimeSpan.FromMinutes(time * 10) + " минут");
-                foreach(var f in result)
+                if (Convert.ToInt32(temps[i]) > maxTemp)
                 {
-                    Console.WriteLine(f);
+                    maxTempBelow = true;
+                    result.Add($"Время:{dateAndTime.AddMinutes(i * 10)}, Факт:{temps[i]}, Норма:{maxTemp}, Отклонение от нормы:{(Convert.ToInt32(temps[i]) - maxTemp)}");
+                    time++;
                 }
+
+
+            }
+
+
+            if ((minTempBelow && time * 10 > minTempTime) || (maxTempBelow && time * 10 > maxTempTime))
+            {
+                //Console.WriteLine("Порог минимальной допустимой температуры превышен на " + TimeSpan.FromMinutes(time * 10) + " минут");
+                //foreach(var f in result)
+                //{
+                //    Console.WriteLine(f);
+                //}
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
 
