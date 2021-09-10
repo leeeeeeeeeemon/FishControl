@@ -49,19 +49,21 @@ namespace FishControl
                     }
                 }
             }
+
             else if (chooseType == "Pollock")
             {
                 Pollock f = new Pollock();
                 if (f.ComplianceConditions(dateFish, temp)) // проверка на темп
                 {
-                        Console.WriteLine("Порог максимальной допустимой температуры превышен на " + TimeSpan.FromMinutes(f.time * 10) + " минут");
-                        foreach (var r in f.result)
-                        {
-                            Console.WriteLine(r);
-                        }
+                    Console.WriteLine("Порог максимальной допустимой температуры превышен на " + TimeSpan.FromMinutes(f.time * 10) + " минут");
+                    foreach (var r in f.result)
+                    {
+                        Console.WriteLine(r);
+                    }
 
                 }
             }
+
             else if (chooseType == "Pink Salmon")
             {
                 PinkSalmon f = new PinkSalmon();
@@ -75,7 +77,6 @@ namespace FishControl
 
                 }
             }
-
             string sdad = Console.ReadLine(); // чтобы консоль не закрывалась
         }
 
@@ -90,8 +91,6 @@ namespace FishControl
 
     }
 
-
-
     class Fish
     {
         public string name;
@@ -105,11 +104,7 @@ namespace FishControl
         public List<string> result = new List<string>();
         public int time = 0;
         
-
-        public Fish()
-        {
-       
-        }
+        public Fish() {}
 
         protected void Output()
         {
@@ -136,7 +131,6 @@ namespace FishControl
 
         public bool ComplianceConditions(DateTime dateAndTime, string[] temps) //Проверка на превышение пределов температуры, возвращает булл значение
         {
-
             for (int i = 0; i < temps.Length; i++) //Проверка на превышение мин температуры
             {
                 if (Convert.ToInt32(temps[i]) < minTemp)
@@ -155,18 +149,10 @@ namespace FishControl
                     result.Add($"Время:{dateAndTime.AddMinutes(i * 10)}, Факт:{temps[i]}, Норма:{maxTemp}, Отклонение от нормы:+{(Convert.ToInt32(temps[i]) - maxTemp)}");
                     time++;
                 }
-
-
             }
-
 
             if ((minTempBelow && time * 10 > minTempTime) || (maxTempBelow && time * 10 > maxTempTime)) //Проверка на продолжиельность превышения пределов
             {
-                //Console.WriteLine("Порог минимальной допустимой температуры превышен на " + TimeSpan.FromMinutes(time * 10) + " минут");
-                //foreach(var f in result)
-                //{
-                //    Console.WriteLine(f);
-                //}
                 return true;
             }
             else
@@ -174,7 +160,6 @@ namespace FishControl
                 return false;
             }
         }
-
     }
 
     class Pollock : Fish //Минтай ( по англ Pollock воть так-_-)
@@ -185,7 +170,6 @@ namespace FishControl
             maxTemp = -5;
             maxTempTime = 40;
             
-
             Output();
         }
 
@@ -199,8 +183,6 @@ namespace FishControl
                     result.Add($"Время:{dateAndTime.AddMinutes(i * 10)}, Факт:{temps[i]}, Норма:{maxTemp}, Отклонение от нормы:+{(Convert.ToInt32(temps[i]) - maxTemp)}");
                     time++;
                 }
-
-
             }
             if (maxTempBelow && time * 10 > maxTempTime) //Проверка на продолжиельность превышения пределов
             {
@@ -209,8 +191,7 @@ namespace FishControl
             else
             {
                 return false;
-            }
-            
+            }          
         }
     }
 
@@ -229,7 +210,6 @@ namespace FishControl
 
         public bool ComplianceConditions(DateTime dateAndTime, string[] temps) //Проверка на превышение пределов температуры, возвращает булл значение
         {
-
             for (int i = 0; i < temps.Length; i++) //Проверка на превышение мин температуры
             {
                 if (Convert.ToInt32(temps[i]) < minTemp)
@@ -248,10 +228,7 @@ namespace FishControl
                     result.Add($"Время:{dateAndTime.AddMinutes(i * 10)}, Факт:{temps[i]}, Норма:{maxTemp}, Отклонение от нормы:+{(Convert.ToInt32(temps[i]) - maxTemp)}");
                     time++;
                 }
-
-
             }
-
 
             if ((minTempBelow && time * 10 > minTempTime) || (maxTempBelow && time * 10 > maxTempTime)) //Проверка на продолжиельность превышения пределов
             {
