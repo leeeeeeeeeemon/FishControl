@@ -34,7 +34,6 @@
             this.lbTimeMax = new System.Windows.Forms.TextBox();
             this.tbMin = new System.Windows.Forms.TextBox();
             this.tbTemp = new System.Windows.Forms.TextBox();
-            this.tbDate = new System.Windows.Forms.TextBox();
             this.btnDown = new System.Windows.Forms.Button();
             this.btnOtchet = new System.Windows.Forms.Button();
             this.lbl_Fish = new System.Windows.Forms.Label();
@@ -45,6 +44,7 @@
             this.lbMin = new System.Windows.Forms.Label();
             this.lbMax = new System.Windows.Forms.Label();
             this.lbFish = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // cbFish
@@ -99,14 +99,6 @@
             this.tbTemp.Name = "tbTemp";
             this.tbTemp.Size = new System.Drawing.Size(316, 22);
             this.tbTemp.TabIndex = 5;
-            // 
-            // tbDate
-            // 
-            this.tbDate.Location = new System.Drawing.Point(191, 232);
-            this.tbDate.Multiline = true;
-            this.tbDate.Name = "tbDate";
-            this.tbDate.Size = new System.Drawing.Size(232, 22);
-            this.tbDate.TabIndex = 6;
             // 
             // btnDown
             // 
@@ -200,12 +192,22 @@
             this.lbFish.TabIndex = 17;
             this.lbFish.Text = "Вид рыбы";
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.CustomFormat = "dd.MM.yyyy HH:m";
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker1.Location = new System.Drawing.Point(191, 237);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(232, 22);
+            this.dateTimePicker1.TabIndex = 18;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.lbFish);
             this.Controls.Add(this.lbMax);
             this.Controls.Add(this.lbMin);
@@ -216,7 +218,6 @@
             this.Controls.Add(this.lbl_Fish);
             this.Controls.Add(this.btnOtchet);
             this.Controls.Add(this.btnDown);
-            this.Controls.Add(this.tbDate);
             this.Controls.Add(this.tbTemp);
             this.Controls.Add(this.tbMin);
             this.Controls.Add(this.lbTimeMax);
@@ -240,7 +241,6 @@
         private System.Windows.Forms.TextBox lbTimeMax;
         private System.Windows.Forms.TextBox tbMin;
         private System.Windows.Forms.TextBox tbTemp;
-        private System.Windows.Forms.TextBox tbDate;
         private System.Windows.Forms.Button btnDown;
         private System.Windows.Forms.Button btnOtchet;
         private System.Windows.Forms.Label lbl_Fish;
@@ -251,6 +251,7 @@
         private System.Windows.Forms.Label lbMin;
         private System.Windows.Forms.Label lbMax;
         private System.Windows.Forms.Label lbFish;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }
 
