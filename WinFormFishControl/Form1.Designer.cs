@@ -127,6 +127,7 @@
             this.btnOtchet.TabIndex = 8;
             this.btnOtchet.Text = "Сформировать отчет";
             this.btnOtchet.UseVisualStyleBackColor = false;
+            this.btnOtchet.Click += new System.EventHandler(this.btnOtchet_Click);
             // 
             // lbl_Fish
             // 
