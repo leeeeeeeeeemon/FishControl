@@ -6,10 +6,10 @@ namespace ClassLibrary
     abstract public class Fish
     {
         public string name;
-        protected int maxTemp;
-        protected int maxTempTime;
-        protected int minTemp;
-        protected int minTempTime;
+        public int maxTemp;
+        public int maxTempTime;
+        public int minTemp;
+        public int minTempTime;
 
         public bool minTempBelow = false;
         public bool maxTempBelow = false;
