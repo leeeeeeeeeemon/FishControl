@@ -13,7 +13,10 @@ namespace WinFormFishControl
 {
     public partial class Form1 : Form
     {
-        public Object fish;
+        public Semga semga = new Semga();
+        PinkSalmon pinkSalmon = new PinkSalmon();
+        Pollock pollock = new Pollock();
+
         public Form1()
         {
             InitializeComponent();
@@ -33,9 +36,20 @@ namespace WinFormFishControl
             }
             else
             {
-                
-                Form2 newForm = new Form2();
-                newForm.Show();
+                string[] temps = tbTemp.Text.Split(' ');
+                if (cbFish.SelectedItem == "Семга")
+                {
+                    if(semga.ComplianceConditions(dateTimePicker1.Value, temps))
+                    {
+                        Form2 newForm = new Form2(semga.result, semga.maxTempBelow, semga.time);
+                        newForm.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Порог не превышен");
+                    }
+                }
+                    
             }
            
         }
@@ -44,25 +58,25 @@ namespace WinFormFishControl
         {
             if (cbFish.SelectedItem == "Семга")
             {
-                Semga f = new Semga();
-                tbMax.Text = Convert.ToString(f.maxTemp);
-                tbMin.Text = Convert.ToString(f.minTemp);
-                tbTimeMax.Text = Convert.ToString(f.maxTempTime);
-                tbTimeMin.Text = Convert.ToString(f.minTempTime);
+                tbMax.Text = Convert.ToString(semga.maxTemp);
+                tbMin.Text = Convert.ToString(semga.minTemp);
+                tbTimeMax.Text = Convert.ToString(semga.maxTempTime);
+                tbTimeMin.Text = Convert.ToString(semga.minTempTime);
+                
             }
             else if (cbFish.SelectedItem == "Горбуша")
             {
-                PinkSalmon f = new PinkSalmon();
-                tbMax.Text = Convert.ToString(f.maxTemp);
-                tbMin.Text = Convert.ToString(f.minTemp);
-                tbTimeMax.Text = Convert.ToString(f.maxTempTime);
-                tbTimeMin.Text = Convert.ToString(f.minTempTime);
+               
+                tbMax.Text = Convert.ToString(pinkSalmon.maxTemp);
+                tbMin.Text = Convert.ToString(pinkSalmon.minTemp);
+                tbTimeMax.Text = Convert.ToString(pinkSalmon.maxTempTime);
+                tbTimeMin.Text = Convert.ToString(pinkSalmon.minTempTime);
             }
             else if (cbFish.SelectedItem == "Минтай")
             {
-                Pollock f = new Pollock();
-                tbMax.Text = Convert.ToString(f.maxTemp);
-                tbTimeMax.Text = Convert.ToString(f.maxTempTime);
+                
+                tbMax.Text = Convert.ToString(pollock.maxTemp);
+                tbTimeMax.Text = Convert.ToString(pollock.maxTempTime);
             }
         }
     }
