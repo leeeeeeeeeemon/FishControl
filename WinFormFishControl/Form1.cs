@@ -16,6 +16,7 @@ namespace WinFormFishControl
         public Form1()
         {
             InitializeComponent();
+            
         }
 
         
