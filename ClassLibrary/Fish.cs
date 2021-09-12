@@ -38,7 +38,7 @@ namespace ClassLibrary
                 if (Convert.ToInt32(temps[i]) < minTemp)
                 {
                     minTempBelow = true;
-                    result.Add($"Время:{dateAndTime.AddMinutes(i * 10)}, Факт:{temps[i]}, Норма:{minTemp}, Отклонение от нормы:{(Convert.ToInt32(temps[i]) - minTemp)}");
+                    result.Add($"  Время:{dateAndTime.AddMinutes(i * 10)},   Факт:{temps[i]},   Норма:{minTemp},   Отклонение от нормы:{(Convert.ToInt32(temps[i]) - minTemp)}");
                     time++;
                 }
             }
@@ -48,7 +48,7 @@ namespace ClassLibrary
                 if (Convert.ToInt32(temps[i]) > maxTemp)
                 {
                     maxTempBelow = true;
-                    result.Add($"Время:{dateAndTime.AddMinutes(i * 10)}, Факт:{temps[i]}, Норма:{maxTemp}, Отклонение от нормы:+{(Convert.ToInt32(temps[i]) - maxTemp)}");
+                    result.Add($"  Время:{dateAndTime.AddMinutes(i * 10)},   Факт:{temps[i]},   Норма:{maxTemp},   Отклонение от нормы:+{(Convert.ToInt32(temps[i]) - maxTemp)}");
                     time++;
                 }
             }
@@ -81,7 +81,7 @@ namespace ClassLibrary
                 if (Convert.ToInt32(temps[i]) > maxTemp)
                 {
                     maxTempBelow = true;
-                    result.Add($"Время:{dateAndTime.AddMinutes(i * 10)}, Факт:{temps[i]}, Норма:{maxTemp}, Отклонение от нормы:+{(Convert.ToInt32(temps[i]) - maxTemp)}");
+                    result.Add($"  Время:{dateAndTime.AddMinutes(i * 10)},   Факт:{temps[i]},   Норма:{maxTemp},   Отклонение от нормы:+{(Convert.ToInt32(temps[i]) - maxTemp)}");
                     time++;
                 }
             }
@@ -116,7 +116,7 @@ namespace ClassLibrary
                 if (Convert.ToInt32(temps[i]) < minTemp)
                 {
                     minTempBelow = true;
-                    result.Add($"Время:{dateAndTime.AddMinutes(i * 10)}, Факт:{temps[i]}, Норма:{minTemp}, Отклонение от нормы:{(Convert.ToInt32(temps[i]) - minTemp)}");
+                    result.Add($"  Время:{dateAndTime.AddMinutes(i * 10)},   Факт:{temps[i]},   Норма:{minTemp},   Отклонение от нормы:{(Convert.ToInt32(temps[i]) - minTemp)}");
                     time++;
                 }
             }
@@ -126,7 +126,7 @@ namespace ClassLibrary
                 if (Convert.ToInt32(temps[i]) > maxTemp)
                 {
                     maxTempBelow = true;
-                    result.Add($"Время:{dateAndTime.AddMinutes(i * 10)}, Факт:{temps[i]}, Норма:{maxTemp}, Отклонение от нормы:+{(Convert.ToInt32(temps[i]) - maxTemp)}");
+                    result.Add($"  Время:{dateAndTime.AddMinutes(i * 10)},   Факт:{temps[i]},   Норма:{maxTemp},   Отклонение от нормы:+{(Convert.ToInt32(temps[i]) - maxTemp)}");
                     time++;
                 }
             }

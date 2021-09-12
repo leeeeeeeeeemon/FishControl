@@ -19,18 +19,12 @@ namespace WinFormFishControl
 
         public Form1()
         {
-            InitializeComponent();
-            
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
+            InitializeComponent();         
         }
 
         private void btnOtchet_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(Convert.ToString(dateTimePicker1))|| String.IsNullOrEmpty(tbTemp.Text))
+            if (String.IsNullOrEmpty(Convert.ToString(dtDate))|| String.IsNullOrEmpty(tbTemp.Text))
             {
                 MessageBox.Show("Заполните дату и температуры");
             }
@@ -39,9 +33,10 @@ namespace WinFormFishControl
                 string[] temps = tbTemp.Text.Split(' ');
                 if (cbFish.SelectedItem == "Семга")
                 {
-                    if(semga.ComplianceConditions(dateTimePicker1.Value, temps))
+                    if(semga.ComplianceConditions(dtDate.Value, temps))
                     {
                         Form2 newForm = new Form2(semga.result, semga.maxTempBelow, semga.time);
+                        MessageBox.Show("Порог превышен");
                         newForm.Show();
                     }
                     else
@@ -49,9 +44,35 @@ namespace WinFormFishControl
                         MessageBox.Show("Порог не превышен");
                     }
                 }
-                    
-            }
-           
+
+                if (cbFish.SelectedItem == "Горбуша")
+                {
+                    if (pinkSalmon.ComplianceConditions(dtDate.Value, temps))
+                    {
+                        Form2 newForm = new Form2(pinkSalmon.result, pinkSalmon.maxTempBelow, pinkSalmon.time);
+                        MessageBox.Show("Порог превышен");
+                        newForm.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Порог не превышен");
+                    }
+                }
+
+                if (cbFish.SelectedItem == "Минтай")
+                {
+                    if (pollock.ComplianceConditions(dtDate.Value, temps))
+                    {
+                        Form2 newForm = new Form2(pollock.result, pollock.maxTempBelow, pollock.time);
+                        MessageBox.Show("Порог превышен");
+                        newForm.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Порог не превышен");
+                    }
+                }
+            }      
         }
 
         private void cbFish_SelectedIndexChanged(object sender, EventArgs e)
@@ -61,23 +82,23 @@ namespace WinFormFishControl
                 tbMax.Text = Convert.ToString(semga.maxTemp);
                 tbMin.Text = Convert.ToString(semga.minTemp);
                 tbTimeMax.Text = Convert.ToString(semga.maxTempTime);
-                tbTimeMin.Text = Convert.ToString(semga.minTempTime);
-                
+                tbTimeMin.Text = Convert.ToString(semga.minTempTime);               
             }
+
             else if (cbFish.SelectedItem == "Горбуша")
-            {
-               
+            {              
                 tbMax.Text = Convert.ToString(pinkSalmon.maxTemp);
                 tbMin.Text = Convert.ToString(pinkSalmon.minTemp);
                 tbTimeMax.Text = Convert.ToString(pinkSalmon.maxTempTime);
                 tbTimeMin.Text = Convert.ToString(pinkSalmon.minTempTime);
             }
+
             else if (cbFish.SelectedItem == "Минтай")
-            {
-                
+            {               
                 tbMax.Text = Convert.ToString(pollock.maxTemp);
                 tbTimeMax.Text = Convert.ToString(pollock.maxTempTime);
             }
         }
+
     }
 }

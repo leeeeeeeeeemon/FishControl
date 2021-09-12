@@ -28,12 +28,10 @@ namespace WinFormFishControl
                 tbOtchet.Text = "Порог минимально допустимой температуры превышен на " + TimeSpan.FromMinutes(timeBelow * 10) + " минут";
             }
 
-             
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
+            for (int i = 0; i < results.Count; i++) 
+            { 
+                tbInfo.Text += results[i].ToString() + Environment.NewLine; 
+            }
         }
     }
 }

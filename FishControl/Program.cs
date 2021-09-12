@@ -88,7 +88,6 @@ namespace FishControl
             DateTime dateFish = new DateTime(Convert.ToInt32(dateNumbers[2]), Convert.ToInt32(dateNumbers[1]), Convert.ToInt32(dateNumbers[0]), Convert.ToInt32(timeNumbers[0]), Convert.ToInt32(timeNumbers[1]), 0);
             return dateFish;
         }
-
     }
 
     class Fish
@@ -155,6 +154,7 @@ namespace FishControl
             {
                 return true;
             }
+
             else
             {
                 return false;
@@ -184,10 +184,12 @@ namespace FishControl
                     time++;
                 }
             }
+
             if (maxTempBelow && time * 10 > maxTempTime) //Проверка на продолжиельность превышения пределов
             {
                 return true;
             }
+
             else
             {
                 return false;
@@ -234,6 +236,7 @@ namespace FishControl
             {
                 return true;
             }
+
             else
             {
                 return false;
