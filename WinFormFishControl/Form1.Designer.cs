@@ -127,6 +127,7 @@
             this.btnDown.TabIndex = 7;
             this.btnDown.Text = "Загрузить из файла";
             this.btnDown.UseVisualStyleBackColor = false;
+            this.btnDown.Click += new System.EventHandler(this.btnDown_Click);
             // 
             // btnOtchet
             // 

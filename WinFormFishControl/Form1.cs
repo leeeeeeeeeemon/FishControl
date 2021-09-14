@@ -100,5 +100,22 @@ namespace WinFormFishControl
             }
         }
 
+        private void btnDown_Click(object sender, EventArgs e)
+        {
+            using (System.IO.StreamReader sw = new System.IO.StreamReader(@"C:\Users\nasur\Desktop\список температуры.txt"))
+            {
+                //tbTemp.Text = sw.ReadLine();
+                string [] tempsDate = sw.ReadLine().ToString().Split(';');
+                string Data = tempsDate[0];
+                string temps = tempsDate[1];
+
+                string[] dateAndTimeFish = Data.Split(' ');
+                string[] dateNumbers = dateAndTimeFish[0].Split('.');
+                string[] timeNumbers = dateAndTimeFish[1].Split(':');
+                DateTime dateFish = new DateTime(Convert.ToInt32(dateNumbers[2]), Convert.ToInt32(dateNumbers[1]), Convert.ToInt32(dateNumbers[0]), Convert.ToInt32(timeNumbers[0]), Convert.ToInt32(timeNumbers[1]), 0);
+                dtDate.Value = dateFish;
+                tbTemp.Text = temps;
+            }
+        }
     }
 }
