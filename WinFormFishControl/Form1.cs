@@ -19,12 +19,12 @@ namespace WinFormFishControl
 
         public Form1()
         {
-            InitializeComponent();         
+            InitializeComponent();
         }
 
         private void btnOtchet_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(Convert.ToString(dtDate))|| String.IsNullOrEmpty(tbTemp.Text))
+            if (String.IsNullOrEmpty(Convert.ToString(dtDate)) || String.IsNullOrEmpty(tbTemp.Text))
             {
                 MessageBox.Show("Заполните дату и температуры");
             }
@@ -33,7 +33,7 @@ namespace WinFormFishControl
                 string[] temps = tbTemp.Text.Split(' ');
                 if (cbFish.SelectedItem == "Семга")
                 {
-                    if(semga.ComplianceConditions(dtDate.Value, temps))
+                    if (semga.ComplianceConditions(dtDate.Value, temps))
                     {
                         Form2 newForm = new Form2(semga.result, semga.maxTempBelow, semga.time);
                         MessageBox.Show("Порог превышен");
@@ -72,7 +72,7 @@ namespace WinFormFishControl
                         MessageBox.Show("Порог не превышен");
                     }
                 }
-            }      
+            }
         }
 
         private void cbFish_SelectedIndexChanged(object sender, EventArgs e)
@@ -82,11 +82,11 @@ namespace WinFormFishControl
                 tbMax.Text = Convert.ToString(semga.maxTemp);
                 tbMin.Text = Convert.ToString(semga.minTemp);
                 tbTimeMax.Text = Convert.ToString(semga.maxTempTime);
-                tbTimeMin.Text = Convert.ToString(semga.minTempTime);               
+                tbTimeMin.Text = Convert.ToString(semga.minTempTime);
             }
 
             else if (cbFish.SelectedItem == "Горбуша")
-            {              
+            {
                 tbMax.Text = Convert.ToString(pinkSalmon.maxTemp);
                 tbMin.Text = Convert.ToString(pinkSalmon.minTemp);
                 tbTimeMax.Text = Convert.ToString(pinkSalmon.maxTempTime);
@@ -94,7 +94,7 @@ namespace WinFormFishControl
             }
 
             else if (cbFish.SelectedItem == "Минтай")
-            {               
+            {
                 tbMax.Text = Convert.ToString(pollock.maxTemp);
                 tbTimeMax.Text = Convert.ToString(pollock.maxTempTime);
             }
@@ -102,19 +102,22 @@ namespace WinFormFishControl
 
         private void btnDown_Click(object sender, EventArgs e)
         {
-            using (System.IO.StreamReader sw = new System.IO.StreamReader(@"C:\Users\nasur\Desktop\список температуры.txt"))
+            openFD.ShowDialog();
+            if (openFD.FileName != "")
             {
-                //tbTemp.Text = sw.ReadLine();
-                string [] tempsDate = sw.ReadLine().ToString().Split(';');
-                string Data = tempsDate[0];
-                string temps = tempsDate[1];
+                using (System.IO.StreamReader sw = new System.IO.StreamReader(openFD.FileName))
+                {
+                    string[] tempsDate = sw.ReadLine().ToString().Split(';');
+                    string Data = tempsDate[0];
+                    string temps = tempsDate[1];
 
-                string[] dateAndTimeFish = Data.Split(' ');
-                string[] dateNumbers = dateAndTimeFish[0].Split('.');
-                string[] timeNumbers = dateAndTimeFish[1].Split(':');
-                DateTime dateFish = new DateTime(Convert.ToInt32(dateNumbers[2]), Convert.ToInt32(dateNumbers[1]), Convert.ToInt32(dateNumbers[0]), Convert.ToInt32(timeNumbers[0]), Convert.ToInt32(timeNumbers[1]), 0);
-                dtDate.Value = dateFish;
-                tbTemp.Text = temps;
+                    string[] dateAndTimeFish = Data.Split(' ');
+                    string[] dateNumbers = dateAndTimeFish[0].Split('.');
+                    string[] timeNumbers = dateAndTimeFish[1].Split(':');
+                    DateTime dateFish = new DateTime(Convert.ToInt32(dateNumbers[2]), Convert.ToInt32(dateNumbers[1]), Convert.ToInt32(dateNumbers[0]), Convert.ToInt32(timeNumbers[0]), Convert.ToInt32(timeNumbers[1]), 0);
+                    dtDate.Value = dateFish;
+                    tbTemp.Text = temps;
+                }
             }
         }
     }

@@ -45,6 +45,7 @@
             this.lbMax = new System.Windows.Forms.Label();
             this.lbFish = new System.Windows.Forms.Label();
             this.dtDate = new System.Windows.Forms.DateTimePicker();
+            this.openFD = new System.Windows.Forms.OpenFileDialog();
             this.SuspendLayout();
             // 
             // cbFish
@@ -240,6 +241,10 @@
             this.dtDate.Size = new System.Drawing.Size(175, 22);
             this.dtDate.TabIndex = 18;
             // 
+            // openFD
+            // 
+            this.openFD.FileName = "openFD";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -289,6 +294,7 @@
         private System.Windows.Forms.Label lbMax;
         private System.Windows.Forms.Label lbFish;
         private System.Windows.Forms.DateTimePicker dtDate;
+        private System.Windows.Forms.OpenFileDialog openFD;
     }
 }
 

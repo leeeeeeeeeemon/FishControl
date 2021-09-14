@@ -29,9 +29,10 @@ namespace WinFormFishControl
             }
 
             for (int i = 0; i < results.Count; i++) 
-            { 
+            {
                 tbInfo.Text += results[i].ToString() + Environment.NewLine; 
             }
+           
         }
     }
 }
