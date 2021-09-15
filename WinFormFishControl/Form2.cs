@@ -34,5 +34,17 @@ namespace WinFormFishControl
             }
            
         }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            saveFD.ShowDialog();
+            if (saveFD.FileName != "")
+            {
+                using (System.IO.StreamWriter sw = new System.IO.StreamWriter(saveFD.FileName))
+                {
+                    sw.WriteLine(tbInfo.Text);
+                }
+            }
+        }
     }
 }
