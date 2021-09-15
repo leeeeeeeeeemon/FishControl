@@ -14,18 +14,22 @@ namespace WinFormFishControl
     {
         List<string> results;
         bool belowMax;
-        public Form2(List<string> r, bool maxTempBelow, int timeBelow )
+        string fishName;
+        DateTime date;
+        public Form2(List<string> r, bool maxTempBelow, int timeBelow, string fishName, DateTime date)
         {
             InitializeComponent();
             results = r;
             belowMax = maxTempBelow;
+            this.fishName = fishName;
+            this.date = date;
             if (maxTempBelow)
             {
-                tbOtchet.Text = "Порог максимально допустимой температуры превышен на " + TimeSpan.FromMinutes(timeBelow * 10) + " минут";
+                tbOtchet.Text = "Порог превышен на " + TimeSpan.FromMinutes(timeBelow * 10);
             }
             else
             {
-                tbOtchet.Text = "Порог минимально допустимой температуры превышен на " + TimeSpan.FromMinutes(timeBelow * 10) + " минут";
+                tbOtchet.Text = "Порог превышен на " + TimeSpan.FromMinutes(timeBelow * 10);
             }
 
             for (int i = 0; i < results.Count; i++) 
@@ -42,7 +46,9 @@ namespace WinFormFishControl
             {
                 using (System.IO.StreamWriter sw = new System.IO.StreamWriter(saveFD.FileName))
                 {
-                    sw.WriteLine(tbInfo.Text);
+                    sw.WriteLine($"  {fishName}  {date}");
+                    sw.WriteLine($"  Дата                    Норма       Факт                Отклонение");
+                    sw.WriteLine(tbInfo.Text);                
                 }
             }
         }

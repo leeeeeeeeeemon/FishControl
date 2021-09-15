@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.cbFish = new System.Windows.Forms.ComboBox();
             this.tbMax = new System.Windows.Forms.TextBox();
             this.tbTimeMin = new System.Windows.Forms.TextBox();
             this.tbTimeMax = new System.Windows.Forms.TextBox();
@@ -46,22 +45,9 @@
             this.lbFish = new System.Windows.Forms.Label();
             this.dtDate = new System.Windows.Forms.DateTimePicker();
             this.openFD = new System.Windows.Forms.OpenFileDialog();
+            this.tbFish = new System.Windows.Forms.TextBox();
+            this.btnLoadFish = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // cbFish
-            // 
-            this.cbFish.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cbFish.FormattingEnabled = true;
-            this.cbFish.Items.AddRange(new object[] {
-            "Минтай",
-            "Семга",
-            "Горбуша"});
-            this.cbFish.Location = new System.Drawing.Point(147, 41);
-            this.cbFish.Margin = new System.Windows.Forms.Padding(2);
-            this.cbFish.Name = "cbFish";
-            this.cbFish.Size = new System.Drawing.Size(221, 24);
-            this.cbFish.TabIndex = 0;
-            this.cbFish.SelectedIndexChanged += new System.EventHandler(this.cbFish_SelectedIndexChanged);
             // 
             // tbMax
             // 
@@ -245,12 +231,35 @@
             // 
             this.openFD.FileName = "openFD";
             // 
+            // tbFish
+            // 
+            this.tbFish.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbFish.Location = new System.Drawing.Point(128, 41);
+            this.tbFish.Name = "tbFish";
+            this.tbFish.Size = new System.Drawing.Size(164, 29);
+            this.tbFish.TabIndex = 19;
+            // 
+            // btnLoadFish
+            // 
+            this.btnLoadFish.BackColor = System.Drawing.Color.IndianRed;
+            this.btnLoadFish.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnLoadFish.Location = new System.Drawing.Point(430, 41);
+            this.btnLoadFish.Margin = new System.Windows.Forms.Padding(2);
+            this.btnLoadFish.Name = "btnLoadFish";
+            this.btnLoadFish.Size = new System.Drawing.Size(213, 49);
+            this.btnLoadFish.TabIndex = 20;
+            this.btnLoadFish.Text = "Загрузить рыбу";
+            this.btnLoadFish.UseVisualStyleBackColor = false;
+            this.btnLoadFish.Click += new System.EventHandler(this.btnLoadFish_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(661, 450);
+            this.Controls.Add(this.btnLoadFish);
+            this.Controls.Add(this.tbFish);
             this.Controls.Add(this.dtDate);
             this.Controls.Add(this.lbFish);
             this.Controls.Add(this.lbMax);
@@ -267,7 +276,6 @@
             this.Controls.Add(this.tbTimeMax);
             this.Controls.Add(this.tbTimeMin);
             this.Controls.Add(this.tbMax);
-            this.Controls.Add(this.cbFish);
             this.Name = "Form1";
             this.Text = "Мониторинг температуры";
             this.ResumeLayout(false);
@@ -276,8 +284,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ComboBox cbFish;
         private System.Windows.Forms.TextBox tbMax;
         private System.Windows.Forms.TextBox tbTimeMin;
         private System.Windows.Forms.TextBox tbTimeMax;
@@ -295,6 +301,8 @@
         private System.Windows.Forms.Label lbFish;
         private System.Windows.Forms.DateTimePicker dtDate;
         private System.Windows.Forms.OpenFileDialog openFD;
+        private System.Windows.Forms.TextBox tbFish;
+        private System.Windows.Forms.Button btnLoadFish;
     }
 }
 

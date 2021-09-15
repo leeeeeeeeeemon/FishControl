@@ -31,11 +31,11 @@ namespace WinFormFishControl
             else
             {
                 string[] temps = tbTemp.Text.Split(' ');
-                if (cbFish.SelectedItem == "Семга")
+                if (tbFish.Text == "Семга")
                 {
-                    if (semga.ComplianceConditions(dtDate.Value, temps))
+                    if (semga.ComplianceConditions(dtDate.Value, temps, Convert.ToInt32(tbMax.Text), Convert.ToInt32(tbTimeMax.Text), Convert.ToInt32(tbMin.Text), Convert.ToInt32(tbTimeMin.Text)))
                     {
-                        Form2 newForm = new Form2(semga.result, semga.maxTempBelow, semga.time);
+                        Form2 newForm = new Form2(semga.result, semga.maxTempBelow, semga.time, semga.name, dtDate.Value);
                       
                         newForm.Show();
                     }
@@ -45,11 +45,11 @@ namespace WinFormFishControl
                     }
                 }
 
-                if (cbFish.SelectedItem == "Горбуша")
+                if (tbFish.Text == "Горбуша")
                 {
-                    if (pinkSalmon.ComplianceConditions(dtDate.Value, temps))
+                    if (pinkSalmon.ComplianceConditions(dtDate.Value, temps, Convert.ToInt32(tbMax.Text), Convert.ToInt32(tbTimeMax.Text), Convert.ToInt32(tbMin.Text), Convert.ToInt32(tbTimeMin.Text)))
                     {
-                        Form2 newForm = new Form2(pinkSalmon.result, pinkSalmon.maxTempBelow, pinkSalmon.time);
+                        Form2 newForm = new Form2(pinkSalmon.result, pinkSalmon.maxTempBelow, pinkSalmon.time, pinkSalmon.name, dtDate.Value);
                        
                         newForm.Show();
                     }
@@ -59,11 +59,11 @@ namespace WinFormFishControl
                     }
                 }
 
-                if (cbFish.SelectedItem == "Минтай")
+                if (tbFish.Text == "Минтай")
                 {
-                    if (pollock.ComplianceConditions(dtDate.Value, temps))
+                    if (pollock.ComplianceConditions(dtDate.Value, temps, Convert.ToInt32(tbMax.Text), Convert.ToInt32(tbTimeMax.Text), Convert.ToInt32(tbMin.Text), Convert.ToInt32(tbTimeMin.Text)))
                     {
-                        Form2 newForm = new Form2(pollock.result, pollock.maxTempBelow, pollock.time);
+                        Form2 newForm = new Form2(pollock.result, pollock.maxTempBelow, pollock.time, pollock.name, dtDate.Value);
                        
                         newForm.Show();
                     }
@@ -72,31 +72,6 @@ namespace WinFormFishControl
                         MessageBox.Show("Порог не превышен");
                     }
                 }
-            }
-        }
-
-        private void cbFish_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cbFish.SelectedItem == "Семга")
-            {
-                tbMax.Text = Convert.ToString(semga.maxTemp);
-                tbMin.Text = Convert.ToString(semga.minTemp);
-                tbTimeMax.Text = Convert.ToString(semga.maxTempTime);
-                tbTimeMin.Text = Convert.ToString(semga.minTempTime);
-            }
-
-            else if (cbFish.SelectedItem == "Горбуша")
-            {
-                tbMax.Text = Convert.ToString(pinkSalmon.maxTemp);
-                tbMin.Text = Convert.ToString(pinkSalmon.minTemp);
-                tbTimeMax.Text = Convert.ToString(pinkSalmon.maxTempTime);
-                tbTimeMin.Text = Convert.ToString(pinkSalmon.minTempTime);
-            }
-
-            else if (cbFish.SelectedItem == "Минтай")
-            {
-                tbMax.Text = Convert.ToString(pollock.maxTemp);
-                tbTimeMax.Text = Convert.ToString(pollock.maxTempTime);
             }
         }
 
@@ -118,6 +93,22 @@ namespace WinFormFishControl
                     dtDate.Value = dateFish;
                     tbTemp.Text = temps;
                 }
+            }
+        }
+
+        private void btnLoadFish_Click(object sender, EventArgs e)
+        {
+            openFD.ShowDialog();
+            using (System.IO.StreamReader sw = new System.IO.StreamReader(openFD.FileName))
+            {
+                string[] nameFishAndTemps = sw.ReadLine().ToString().Split(';');
+                string[] maxTempAndTime = nameFishAndTemps[1].Split(' ');
+                string[] minTempAndTime = nameFishAndTemps[2].Split(' ');
+                tbMax.Text = maxTempAndTime[0];
+                tbTimeMax.Text = maxTempAndTime[1];
+                tbMin.Text = minTempAndTime[0];
+                tbTimeMin.Text = minTempAndTime[1];
+                tbFish.Text = nameFishAndTemps[0];
             }
         }
     }

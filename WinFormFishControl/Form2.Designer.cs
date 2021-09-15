@@ -67,7 +67,7 @@ namespace WinFormFishControl
             this.tbInfo.Margin = new System.Windows.Forms.Padding(2);
             this.tbInfo.Multiline = true;
             this.tbInfo.Name = "tbInfo";
-            this.tbInfo.Size = new System.Drawing.Size(539, 283);
+            this.tbInfo.Size = new System.Drawing.Size(539, 303);
             this.tbInfo.TabIndex = 2;
             // 
             // lbTime
@@ -122,7 +122,7 @@ namespace WinFormFishControl
             // 
             this.btnSave.BackColor = System.Drawing.Color.IndianRed;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnSave.Location = new System.Drawing.Point(227, 403);
+            this.btnSave.Location = new System.Drawing.Point(227, 423);
             this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(213, 49);
@@ -136,7 +136,7 @@ namespace WinFormFishControl
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(645, 463);
+            this.ClientSize = new System.Drawing.Size(682, 483);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.lbNotNorm);
             this.Controls.Add(this.lbNorm);

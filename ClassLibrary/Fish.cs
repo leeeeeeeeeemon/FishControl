@@ -25,20 +25,16 @@ namespace ClassLibrary
         public Semga() : base()
         {
             name = "Semga";
-            maxTemp = 6;
-            maxTempTime = 20;
-            minTemp = -3;
-            minTempTime = 50;
         }
 
-        public bool ComplianceConditions(DateTime dateAndTime, string[] temps) //Проверка на превышение пределов температуры, возвращает булл значение
+        public bool ComplianceConditions(DateTime dateAndTime, string[] temps, int maxTemp, int maxTempTime, int minTemp,int minTempTime) //Проверка на превышение пределов температуры, возвращает булл значение
         {
             for (int i = 0; i < temps.Length; i++) //Проверка на превышение мин температуры
             {
                 if (Convert.ToInt32(temps[i]) < minTemp)
                 {
                     minTempBelow = true;
-                    result.Add($"  {dateAndTime.AddMinutes(i * 10)},   {temps[i]},   {minTemp},   {(Convert.ToInt32(temps[i]) - minTemp)}");
+                    result.Add($"  {dateAndTime.AddMinutes(i * 10)}      {temps[i]}         {minTemp}                       {(Convert.ToInt32(temps[i]) - minTemp)}");
                     time++;
                 }
             }
@@ -48,7 +44,7 @@ namespace ClassLibrary
                 if (Convert.ToInt32(temps[i]) > maxTemp)
                 {
                     maxTempBelow = true;
-                    result.Add($"  {dateAndTime.AddMinutes(i * 10)},   {temps[i]},   {maxTemp},   {(Convert.ToInt32(temps[i]) - maxTemp)}");
+                    result.Add($"  {dateAndTime.AddMinutes(i * 10)}      {temps[i]}         {maxTemp}                       {(Convert.ToInt32(temps[i]) - maxTemp)}");
                     time++;
                 }
             }
@@ -70,18 +66,16 @@ namespace ClassLibrary
         public Pollock() : base()
         {
             name = "Pollock";
-            maxTemp = -5;
-            maxTempTime = 40;
         }
 
-        public bool ComplianceConditions(DateTime dateAndTime, string[] temps) //Проверка на превышение пределов температуры, возвращает булл значение
+        public bool ComplianceConditions(DateTime dateAndTime, string[] temps, int maxTemp, int maxTempTime, int minTemp, int minTempTime) //Проверка на превышение пределов температуры, возвращает булл значение
         {
             for (int i = 0; i < temps.Length; i++) //Проверка на превышение макс температуры
             {
                 if (Convert.ToInt32(temps[i]) > maxTemp)
                 {
                     maxTempBelow = true;
-                    result.Add($"  {dateAndTime.AddMinutes(i * 10)},   {temps[i]},   {maxTemp},   {(Convert.ToInt32(temps[i]) - maxTemp)}");
+                    result.Add($"  {dateAndTime.AddMinutes(i * 10)}      {temps[i]}          {maxTemp}                      {(Convert.ToInt32(temps[i]) - maxTemp)}");
                     time++;
                 }
             }
@@ -103,20 +97,16 @@ namespace ClassLibrary
         public PinkSalmon() : base()
         {
             name = "PinkSalmon";
-            minTemp = -7;
-            minTempTime = 20;
-            maxTemp = 2;
-            maxTempTime = 40;
         }
 
-        public bool ComplianceConditions(DateTime dateAndTime, string[] temps) //Проверка на превышение пределов температуры, возвращает булл значение
+        public bool ComplianceConditions(DateTime dateAndTime, string[] temps, int maxTemp, int maxTempTime, int minTemp,int minTempTime) //Проверка на превышение пределов температуры, возвращает булл значение
         {
             for (int i = 0; i < temps.Length; i++) //Проверка на превышение мин температуры
             {
                 if (Convert.ToInt32(temps[i]) < minTemp)
                 {
                     minTempBelow = true;
-                    result.Add($"  {dateAndTime.AddMinutes(i * 10)},   {temps[i]},   {minTemp},   {(Convert.ToInt32(temps[i]) - minTemp)}");
+                    result.Add($"  {dateAndTime.AddMinutes(i * 10)}      {temps[i]}        {minTemp}                       {(Convert.ToInt32(temps[i]) - minTemp)}");
                     time++;
                 }
             }
@@ -126,7 +116,7 @@ namespace ClassLibrary
                 if (Convert.ToInt32(temps[i]) > maxTemp)
                 {
                     maxTempBelow = true;
-                    result.Add($"  {dateAndTime.AddMinutes(i * 10)},   {temps[i]},   {maxTemp},   {(Convert.ToInt32(temps[i]) - maxTemp)}");
+                    result.Add($"  {dateAndTime.AddMinutes(i * 10)}      {temps[i]}        {maxTemp}                       {(Convert.ToInt32(temps[i]) - maxTemp)}");
                     time++;
                 }
             }
