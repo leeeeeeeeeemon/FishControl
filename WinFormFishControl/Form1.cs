@@ -36,7 +36,7 @@ namespace WinFormFishControl
                     if (semga.ComplianceConditions(dtDate.Value, temps))
                     {
                         Form2 newForm = new Form2(semga.result, semga.maxTempBelow, semga.time);
-                        MessageBox.Show("Порог превышен");
+                      
                         newForm.Show();
                     }
                     else
@@ -50,7 +50,7 @@ namespace WinFormFishControl
                     if (pinkSalmon.ComplianceConditions(dtDate.Value, temps))
                     {
                         Form2 newForm = new Form2(pinkSalmon.result, pinkSalmon.maxTempBelow, pinkSalmon.time);
-                        MessageBox.Show("Порог превышен");
+                       
                         newForm.Show();
                     }
                     else
@@ -64,7 +64,7 @@ namespace WinFormFishControl
                     if (pollock.ComplianceConditions(dtDate.Value, temps))
                     {
                         Form2 newForm = new Form2(pollock.result, pollock.maxTempBelow, pollock.time);
-                        MessageBox.Show("Порог превышен");
+                       
                         newForm.Show();
                     }
                     else
@@ -120,5 +120,7 @@ namespace WinFormFishControl
                 }
             }
         }
+
+      
     }
 }
