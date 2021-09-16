@@ -87,7 +87,7 @@ namespace WinFormFishControl
             this.lbFact.AutoSize = true;
             this.lbFact.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.lbFact.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbFact.Location = new System.Drawing.Point(253, 90);
+            this.lbFact.Location = new System.Drawing.Point(240, 90);
             this.lbFact.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbFact.Name = "lbFact";
             this.lbFact.Size = new System.Drawing.Size(55, 24);

@@ -23,14 +23,42 @@ namespace WinFormFishControl
             belowMax = maxTempBelow;
             this.fishName = fishName;
             this.date = date;
-            if (maxTempBelow)
+            TimeSpan gh = TimeSpan.FromMinutes(timeBelow * 10);
+            if(gh.ToString("hh") == "00")
             {
-                tbOtchet.Text = "Порог превышен на " + TimeSpan.FromMinutes(timeBelow * 10);
+                if (maxTempBelow)
+                {
+                    tbOtchet.Text = "Порог превышен на " + gh.ToString("mm") + " минут";
+                }
+                else
+                {
+                    tbOtchet.Text = "Порог превышен на " + gh.ToString("mm") + " минут";
+                }
+            }
+            else if(gh.ToString("mm") == "00")
+            {
+                if (maxTempBelow)
+                {
+                    tbOtchet.Text = "Порог превышен на " + gh.ToString("hh") + " час(-a)";
+                }
+                else
+                {
+                    tbOtchet.Text = "Порог превышен на " + gh.ToString("hh") + " час(-a)";
+                }
             }
             else
             {
-                tbOtchet.Text = "Порог превышен на " + TimeSpan.FromMinutes(timeBelow * 10);
+                if (maxTempBelow)
+                {
+                    tbOtchet.Text = "Порог превышен на " + gh.ToString("hh") + " час(-a) " + gh.ToString("mm") + " минут";
+
+                }
+                else
+                {
+                    tbOtchet.Text = "Порог превышен на " + gh.ToString("hh") + " час(-a) " + gh.ToString("mm") + " минут";
+                }
             }
+
 
             for (int i = 0; i < results.Count; i++) 
             {
@@ -47,6 +75,7 @@ namespace WinFormFishControl
                 using (System.IO.StreamWriter sw = new System.IO.StreamWriter(saveFD.FileName))
                 {
                     sw.WriteLine($"  {fishName}  {date}");
+                    sw.WriteLine($" {tbOtchet.Text}");
                     sw.WriteLine($"  Дата                    Норма       Факт                Отклонение");
                     sw.WriteLine(tbInfo.Text);                
                 }

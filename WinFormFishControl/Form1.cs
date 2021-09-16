@@ -13,10 +13,7 @@ namespace WinFormFishControl
 {
     public partial class Form1 : Form
     {
-        public Semga semga = new Semga();
-        PinkSalmon pinkSalmon = new PinkSalmon();
-        Pollock pollock = new Pollock();
-
+        Fish fish = new Fish();
         public Form1()
         {
             InitializeComponent();
@@ -28,50 +25,20 @@ namespace WinFormFishControl
             {
                 MessageBox.Show("Заполните дату и температуры");
             }
+
             else
             {
                 string[] temps = tbTemp.Text.Split(' ');
-                if (tbFish.Text == "Семга")
+                if (fish.ComplianceConditions(dtDate.Value, temps, Convert.ToInt32(tbMax.Text), Convert.ToInt32(tbTimeMax.Text), Convert.ToInt32(tbMin.Text), Convert.ToInt32(tbTimeMin.Text)))
                 {
-                    if (semga.ComplianceConditions(dtDate.Value, temps, Convert.ToInt32(tbMax.Text), Convert.ToInt32(tbTimeMax.Text), Convert.ToInt32(tbMin.Text), Convert.ToInt32(tbTimeMin.Text)))
-                    {
-                        Form2 newForm = new Form2(semga.result, semga.maxTempBelow, semga.time, semga.name, dtDate.Value);
-                      
-                        newForm.Show();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Порог не превышен");
-                    }
+                    Form2 newForm = new Form2(fish.result, fish.maxTempBelow, fish.time, tbFish.Text, dtDate.Value);
+                    newForm.Show();
                 }
 
-                if (tbFish.Text == "Горбуша")
+                else
                 {
-                    if (pinkSalmon.ComplianceConditions(dtDate.Value, temps, Convert.ToInt32(tbMax.Text), Convert.ToInt32(tbTimeMax.Text), Convert.ToInt32(tbMin.Text), Convert.ToInt32(tbTimeMin.Text)))
-                    {
-                        Form2 newForm = new Form2(pinkSalmon.result, pinkSalmon.maxTempBelow, pinkSalmon.time, pinkSalmon.name, dtDate.Value);
-                       
-                        newForm.Show();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Порог не превышен");
-                    }
-                }
-
-                if (tbFish.Text == "Минтай")
-                {
-                    if (pollock.ComplianceConditions(dtDate.Value, temps, Convert.ToInt32(tbMax.Text), Convert.ToInt32(tbTimeMax.Text), Convert.ToInt32(tbMin.Text), Convert.ToInt32(tbTimeMin.Text)))
-                    {
-                        Form2 newForm = new Form2(pollock.result, pollock.maxTempBelow, pollock.time, pollock.name, dtDate.Value);
-                       
-                        newForm.Show();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Порог не превышен");
-                    }
-                }
+                    MessageBox.Show("Порог не превышен");
+                }             
             }
         }
 
