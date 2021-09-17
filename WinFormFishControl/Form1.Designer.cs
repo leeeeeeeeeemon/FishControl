@@ -53,7 +53,7 @@
             // 
             this.tbMax.Enabled = false;
             this.tbMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbMax.Location = new System.Drawing.Point(89, 105);
+            this.tbMax.Location = new System.Drawing.Point(128, 105);
             this.tbMax.Margin = new System.Windows.Forms.Padding(2);
             this.tbMax.Multiline = true;
             this.tbMax.Name = "tbMax";
@@ -64,7 +64,7 @@
             // 
             this.tbTimeMin.Enabled = false;
             this.tbTimeMin.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbTimeMin.Location = new System.Drawing.Point(244, 157);
+            this.tbTimeMin.Location = new System.Drawing.Point(297, 154);
             this.tbTimeMin.Margin = new System.Windows.Forms.Padding(2);
             this.tbTimeMin.Multiline = true;
             this.tbTimeMin.Name = "tbTimeMin";
@@ -75,7 +75,7 @@
             // 
             this.tbTimeMax.Enabled = false;
             this.tbTimeMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbTimeMax.Location = new System.Drawing.Point(244, 105);
+            this.tbTimeMax.Location = new System.Drawing.Point(297, 105);
             this.tbTimeMax.Margin = new System.Windows.Forms.Padding(2);
             this.tbTimeMax.Multiline = true;
             this.tbTimeMax.Name = "tbTimeMax";
@@ -86,7 +86,7 @@
             // 
             this.tbMin.Enabled = false;
             this.tbMin.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbMin.Location = new System.Drawing.Point(88, 157);
+            this.tbMin.Location = new System.Drawing.Point(127, 154);
             this.tbMin.Margin = new System.Windows.Forms.Padding(2);
             this.tbMin.Multiline = true;
             this.tbMin.Name = "tbMin";
@@ -107,10 +107,10 @@
             // 
             this.btnDown.BackColor = System.Drawing.Color.IndianRed;
             this.btnDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnDown.Location = new System.Drawing.Point(395, 251);
+            this.btnDown.Location = new System.Drawing.Point(409, 264);
             this.btnDown.Margin = new System.Windows.Forms.Padding(2);
             this.btnDown.Name = "btnDown";
-            this.btnDown.Size = new System.Drawing.Size(213, 49);
+            this.btnDown.Size = new System.Drawing.Size(213, 39);
             this.btnDown.TabIndex = 7;
             this.btnDown.Text = "Загрузить из файла";
             this.btnDown.UseVisualStyleBackColor = false;
@@ -143,7 +143,7 @@
             // 
             this.lbTime.AutoSize = true;
             this.lbTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbTime.Location = new System.Drawing.Point(286, 77);
+            this.lbTime.Location = new System.Drawing.Point(331, 77);
             this.lbTime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbTime.Name = "lbTime";
             this.lbTime.Size = new System.Drawing.Size(67, 24);
@@ -154,7 +154,7 @@
             // 
             this.lbMMTemp.AutoSize = true;
             this.lbMMTemp.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbMMTemp.Location = new System.Drawing.Point(99, 77);
+            this.lbMMTemp.Location = new System.Drawing.Point(138, 77);
             this.lbMMTemp.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbMMTemp.Name = "lbMMTemp";
             this.lbMMTemp.Size = new System.Drawing.Size(129, 24);
@@ -187,7 +187,7 @@
             // 
             this.lbMin.AutoSize = true;
             this.lbMin.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbMin.Location = new System.Drawing.Point(31, 157);
+            this.lbMin.Location = new System.Drawing.Point(61, 157);
             this.lbMin.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbMin.Name = "lbMin";
             this.lbMin.Size = new System.Drawing.Size(41, 24);
@@ -198,7 +198,7 @@
             // 
             this.lbMax.AutoSize = true;
             this.lbMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbMax.Location = new System.Drawing.Point(31, 105);
+            this.lbMax.Location = new System.Drawing.Point(61, 105);
             this.lbMax.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbMax.Name = "lbMax";
             this.lbMax.Size = new System.Drawing.Size(46, 24);
@@ -243,10 +243,10 @@
             // 
             this.btnLoadFish.BackColor = System.Drawing.Color.IndianRed;
             this.btnLoadFish.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnLoadFish.Location = new System.Drawing.Point(430, 41);
+            this.btnLoadFish.Location = new System.Drawing.Point(297, 39);
             this.btnLoadFish.Margin = new System.Windows.Forms.Padding(2);
             this.btnLoadFish.Name = "btnLoadFish";
-            this.btnLoadFish.Size = new System.Drawing.Size(213, 49);
+            this.btnLoadFish.Size = new System.Drawing.Size(198, 34);
             this.btnLoadFish.TabIndex = 20;
             this.btnLoadFish.Text = "Загрузить рыбу";
             this.btnLoadFish.UseVisualStyleBackColor = false;
@@ -276,7 +276,10 @@
             this.Controls.Add(this.tbTimeMax);
             this.Controls.Add(this.tbTimeMin);
             this.Controls.Add(this.tbMax);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Мониторинг температуры";
             this.ResumeLayout(false);
             this.PerformLayout();

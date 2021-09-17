@@ -44,7 +44,7 @@ namespace WinFormFishControl
             // 
             this.lbOtchet.AutoSize = true;
             this.lbOtchet.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbOtchet.Location = new System.Drawing.Point(25, 44);
+            this.lbOtchet.Location = new System.Drawing.Point(25, 29);
             this.lbOtchet.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbOtchet.Name = "lbOtchet";
             this.lbOtchet.Size = new System.Drawing.Size(66, 24);
@@ -54,28 +54,31 @@ namespace WinFormFishControl
             // tbOtchet
             // 
             this.tbOtchet.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbOtchet.Location = new System.Drawing.Point(100, 44);
+            this.tbOtchet.Location = new System.Drawing.Point(95, 29);
             this.tbOtchet.Margin = new System.Windows.Forms.Padding(2);
             this.tbOtchet.Name = "tbOtchet";
             this.tbOtchet.Size = new System.Drawing.Size(432, 29);
             this.tbOtchet.TabIndex = 1;
+            this.tbOtchet.TabStop = false;
             // 
             // tbInfo
             // 
             this.tbInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbInfo.Location = new System.Drawing.Point(57, 116);
+            this.tbInfo.Location = new System.Drawing.Point(57, 96);
             this.tbInfo.Margin = new System.Windows.Forms.Padding(2);
             this.tbInfo.Multiline = true;
             this.tbInfo.Name = "tbInfo";
-            this.tbInfo.Size = new System.Drawing.Size(539, 303);
+            this.tbInfo.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.tbInfo.Size = new System.Drawing.Size(539, 290);
             this.tbInfo.TabIndex = 2;
+            this.tbInfo.TabStop = false;
             // 
             // lbTime
             // 
             this.lbTime.AutoSize = true;
             this.lbTime.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.lbTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbTime.Location = new System.Drawing.Point(117, 90);
+            this.lbTime.Location = new System.Drawing.Point(117, 70);
             this.lbTime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbTime.Name = "lbTime";
             this.lbTime.Size = new System.Drawing.Size(67, 24);
@@ -87,7 +90,7 @@ namespace WinFormFishControl
             this.lbFact.AutoSize = true;
             this.lbFact.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.lbFact.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbFact.Location = new System.Drawing.Point(240, 90);
+            this.lbFact.Location = new System.Drawing.Point(238, 70);
             this.lbFact.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbFact.Name = "lbFact";
             this.lbFact.Size = new System.Drawing.Size(55, 24);
@@ -99,7 +102,7 @@ namespace WinFormFishControl
             this.lbNorm.AutoSize = true;
             this.lbNorm.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.lbNorm.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbNorm.Location = new System.Drawing.Point(309, 90);
+            this.lbNorm.Location = new System.Drawing.Point(297, 70);
             this.lbNorm.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbNorm.Name = "lbNorm";
             this.lbNorm.Size = new System.Drawing.Size(68, 24);
@@ -111,7 +114,7 @@ namespace WinFormFishControl
             this.lbNotNorm.AutoSize = true;
             this.lbNotNorm.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.lbNotNorm.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbNotNorm.Location = new System.Drawing.Point(386, 90);
+            this.lbNotNorm.Location = new System.Drawing.Point(386, 70);
             this.lbNotNorm.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbNotNorm.Name = "lbNotNorm";
             this.lbNotNorm.Size = new System.Drawing.Size(210, 24);
@@ -122,7 +125,7 @@ namespace WinFormFishControl
             // 
             this.btnSave.BackColor = System.Drawing.Color.IndianRed;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnSave.Location = new System.Drawing.Point(227, 423);
+            this.btnSave.Location = new System.Drawing.Point(223, 390);
             this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(213, 49);
@@ -131,12 +134,16 @@ namespace WinFormFishControl
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // saveFD
+            // 
+            this.saveFD.DefaultExt = "txt";
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(682, 483);
+            this.ClientSize = new System.Drawing.Size(661, 450);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.lbNotNorm);
             this.Controls.Add(this.lbNorm);
@@ -145,8 +152,11 @@ namespace WinFormFishControl
             this.Controls.Add(this.tbInfo);
             this.Controls.Add(this.tbOtchet);
             this.Controls.Add(this.lbOtchet);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximizeBox = false;
             this.Name = "Form2";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Отчет";
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -31,8 +31,9 @@ namespace WinFormFishControl
                 string[] temps = tbTemp.Text.Split(' ');
                 if (fish.ComplianceConditions(dtDate.Value, temps, Convert.ToInt32(tbMax.Text), Convert.ToInt32(tbTimeMax.Text), Convert.ToInt32(tbMin.Text), Convert.ToInt32(tbTimeMin.Text)))
                 {
-                    Form2 newForm = new Form2(fish.result, fish.maxTempBelow, fish.time, tbFish.Text, dtDate.Value);
+                    Form2 newForm = new Form2(fish.result, /*fish.maxTempBelow*/ fish.time, tbFish.Text, dtDate.Value);
                     newForm.Show();
+                    newForm.Location = this.Location;
                 }
 
                 else
