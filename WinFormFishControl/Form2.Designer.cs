@@ -38,6 +38,7 @@ namespace WinFormFishControl
             this.lbNotNorm = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.saveFD = new System.Windows.Forms.SaveFileDialog();
+            this.btnRefresh2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lbOtchet
@@ -138,12 +139,25 @@ namespace WinFormFishControl
             // 
             this.saveFD.DefaultExt = "txt";
             // 
+            // btnRefresh2
+            // 
+            this.btnRefresh2.BackColor = System.Drawing.Color.IndianRed;
+            this.btnRefresh2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnRefresh2.Location = new System.Drawing.Point(472, 390);
+            this.btnRefresh2.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRefresh2.Name = "btnRefresh2";
+            this.btnRefresh2.Size = new System.Drawing.Size(159, 49);
+            this.btnRefresh2.TabIndex = 14;
+            this.btnRefresh2.Text = "Очистить";
+            this.btnRefresh2.UseVisualStyleBackColor = false;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(661, 450);
+            this.Controls.Add(this.btnRefresh2);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.lbNotNorm);
             this.Controls.Add(this.lbNorm);
@@ -158,6 +172,7 @@ namespace WinFormFishControl
             this.Name = "Form2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Отчет";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form2_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -174,5 +189,6 @@ namespace WinFormFishControl
         private System.Windows.Forms.Label lbNotNorm;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.SaveFileDialog saveFD;
+        private System.Windows.Forms.Button btnRefresh2;
     }
 }

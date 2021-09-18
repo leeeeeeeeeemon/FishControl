@@ -47,6 +47,7 @@
             this.openFD = new System.Windows.Forms.OpenFileDialog();
             this.tbFish = new System.Windows.Forms.TextBox();
             this.btnLoadFish = new System.Windows.Forms.Button();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // tbMax
@@ -252,12 +253,26 @@
             this.btnLoadFish.UseVisualStyleBackColor = false;
             this.btnLoadFish.Click += new System.EventHandler(this.btnLoadFish_Click);
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.BackColor = System.Drawing.Color.IndianRed;
+            this.btnRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnRefresh.Location = new System.Drawing.Point(487, 374);
+            this.btnRefresh.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(135, 52);
+            this.btnRefresh.TabIndex = 21;
+            this.btnRefresh.Text = "Очистить";
+            this.btnRefresh.UseVisualStyleBackColor = false;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(661, 450);
+            this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnLoadFish);
             this.Controls.Add(this.tbFish);
             this.Controls.Add(this.dtDate);
@@ -306,6 +321,7 @@
         private System.Windows.Forms.OpenFileDialog openFD;
         private System.Windows.Forms.TextBox tbFish;
         private System.Windows.Forms.Button btnLoadFish;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }
 

@@ -13,9 +13,12 @@ namespace WinFormFishControl
 {
     public partial class Form1 : Form
     {
+        
         Fish fish = new Fish();
+        
         public Form1()
         {
+
             InitializeComponent();
         }
 
@@ -78,6 +81,16 @@ namespace WinFormFishControl
                 tbTimeMin.Text = minTempAndTime[1];
                 tbFish.Text = nameFishAndTemps[0];
             }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            tbMax.Clear();
+            tbTimeMax.Clear();
+            tbMin.Clear();
+            tbTimeMin.Clear();
+            tbFish.Clear();
+            tbTemp.Clear();
         }
     }
 }

@@ -30,15 +30,15 @@ namespace WinFormFishControl
             }
             else if(gh.ToString("mm") == "00")
             {
-                tbOtchet.Text = "Порог превышен на " + gh.ToString("hh") + " часa";
+                tbOtchet.Text = "Порог превышен на " + gh.ToString("%h") + " часa";
             }
             else if (gh.ToString("hh") == "01")
             {
-                tbOtchet.Text = "Порог превышен на " + gh.ToString("hh") + " час " + gh.ToString("mm") + " минут";
+                tbOtchet.Text = "Порог превышен на " + gh.ToString("%h") + " час " + gh.ToString("mm") + " минут";
             }
             else
             {
-                tbOtchet.Text = "Порог превышен на " + gh.ToString("hh") + " часa " + gh.ToString("mm") + " минут";
+                tbOtchet.Text = "Порог превышен на " + gh.ToString("%h") + " часa " + gh.ToString("mm") + " минут";
             }
 
             for (int i = 0; i < results.Count; i++) 
@@ -60,6 +60,12 @@ namespace WinFormFishControl
                     sw.WriteLine(tbInfo.Text);                
                 }
             }
+        }
+
+        private void Form2_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            tbInfo.Clear();
+            tbOtchet.Clear();
         }
     }
 }
