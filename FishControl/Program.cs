@@ -16,14 +16,14 @@ namespace FishControl
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("choose type fish (Semga / Pollock / Pink Salmon)");
+           // Console.WriteLine("choose type fish (Semga / Pollock / Pink Salmon)");
             string chooseType = Console.ReadLine();
 
             Console.WriteLine("input date(DD.M.YYYY HH:MM)");
             string dateAndTimeFish = Console.ReadLine();
             DateTime dateFish = ConvertStringToDateTime(dateAndTimeFish);
 
-            Console.WriteLine("input temperatures(18-54)");
+            //Console.WriteLine("input temperatures(18-54)");
             string[] temp = Console.ReadLine().Split(' ');
 
             if (chooseType == "Semga")
@@ -67,7 +67,7 @@ namespace FishControl
                 PinkSalmon f = new PinkSalmon();
                 if (f.ComplianceConditions(dateFish, temp)) // проверка на темп
                 {
-                    Console.WriteLine("Порог максимальной допустимой температуры превышен на " + TimeSpan.FromMinutes(f.time * 10) + " минут");
+                    Console.WriteLine("Porog максимальной допустимой температуры превышен на " + TimeSpan.FromMinutes(f.time * 10) + " минут");
                     foreach (var r in f.result)
                     {
                         Console.WriteLine(r);
